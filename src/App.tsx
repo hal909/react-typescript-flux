@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { Switch, Route } from "react-router-dom"
+import IpfsRouter from 'ipfs-react-router'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import defaultTheme from './theme'
+
+import Dashboard from './components/dashboard'
+import Header from './components/header'
+import Footer from './components/footer'
+
+import Store from "./stores"
+const emitter = Store.emitter
+const store = Store.store
+
+class App extends Component {
+  state = {}
+
+  componentWillMount() {
+  }
+
+  render() {
+    return (
+      <MuiThemeProvider theme={ createMuiTheme(defaultTheme) }>
+        <CssBaseline />
+        <IpfsRouter>
+          <div style={{
+            // styles here
+          }}>
+            <Header />
+            <Switch>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/">
+                <Dashboard />
+              </Route>
+            </Switch>
+            <Footer />
+          </div>
+        </IpfsRouter>
+      </MuiThemeProvider>
+    )
+  }
 }
 
-export default App;
+export default App
