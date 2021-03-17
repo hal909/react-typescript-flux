@@ -1,3 +1,7 @@
+# React Typescript Ethereum dApp
+
+This repo is meant to be used as a starter kit for a react dApp using Ethereum.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
